@@ -20,28 +20,28 @@ $EasingsSrc = "../sub-modules/raylib/examples/others"
 
 
 " ################ # raylib"
-dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file raylib.h --methodClassName Raylib --libraryPath raylib --exclude PI DEG2RAD RAD2DEG
+dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file raylib.h --methodClassName Raylib --libraryPath raylib --exclude PI DEG2RAD RAD2DEG
 " ################ # raymath"
-dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file raymath.h --methodClassName RayMath --libraryPath raylib
+dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file raymath.h --methodClassName RayMath --libraryPath raylib
 #robocopy "./raylib-4.0.0_win64_msvc16/lib" "..\Raylib-CsLo\" raylib.dll
 # robocopy "$RayBin" "..\Raylib-CsLo\" raylib.dll raylib.pdb
 
 " ################ # rlgl"
-dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file rlgl.h --methodClassName RlGl --libraryPath raylib
+dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RaylibSrc" --file rlgl.h --methodClassName RlGl --libraryPath raylib
 " ################ # raygui"
-dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RayGuiSrc" --file raygui.h --methodClassName RayGui --libraryPath raylib --include-directory "$RaylibSrc"
+dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RayGuiSrc" --file raygui.h --methodClassName RayGui --libraryPath raylib --include-directory "$RaylibSrc"
 # robocopy "$RayBin" "..\Raylib-CsLo\" raygui.dll raygui.pdb
 " ################ # physac"
-dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$PhysacSrc" --include-directory "$RaylibSrc" --file physac.h --methodClassName Physac --libraryPath raylib
+dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$PhysacSrc" --include-directory "$RaylibSrc" --file physac.h --methodClassName Physac --libraryPath raylib
 # robocopy "$RayBin" "..\Raylib-CsLo\" physac.dll physac.pdb
 " ################ # rres"
-dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RResSrc" --file rres.h --methodClassName RRes --libraryPath raylib --include-directory "$RaylibSrc"
+dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RResSrc" --file rres.h --methodClassName RRes --libraryPath raylib --include-directory "$RaylibSrc"
 # robocopy "$RayBin" "..\Raylib-CsLo\" raygui.dll raygui.pdb
 # " ################ # rres-raylib"
-# dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RResSrc" --file "rres-raylib.h" --methodClassName RResRaylib --libraryPath raylib --include-directory "$RaylibSrc" --exclude RLAPI
+# dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$RResSrc" --file "rres-raylib.h" --methodClassName RResRaylib --libraryPath raylib --include-directory "$RaylibSrc" --exclude RLAPI
 # robocopy "$RayBin" "..\Raylib-CsLo\" raygui.dll raygui.pdb
 " ################ # Easings "
-dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net6.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$EasingsSrc" --include-directory "$RaylibSrc" --file reasings.h --methodClassName Easings --exclude EaseElasticInOut PI DEG2RAD RAD2DEG
+dotnet ..\sub-modules\ClangSharp\artifacts\bin\sources\ClangSharpPInvokeGenerator\Release\net8.0\ClangSharpPInvokeGenerator.dll @gen-raylib.rsp --file-directory "$EasingsSrc" --include-directory "$RaylibSrc" --file reasings.h --methodClassName Easings --exclude EaseElasticInOut PI DEG2RAD RAD2DEG
 
 "########################## FIX UP FILES"
 

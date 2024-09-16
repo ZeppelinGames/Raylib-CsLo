@@ -1,15 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <!--<TargetFramework>net6.0</TargetFramework>-->
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
+        <!--<TargetFramework>netstandard2.1</TargetFramework>-->
         <!--<EnablePreviewFeatures>True</EnablePreviewFeatures>
         <LangVersion>Preview</LangVersion>-->
-        <LangVersion>10</LangVersion>
+        <LangVersion>11.0</LangVersion>
         <RootNamespace>Raylib_CsLo</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+        <Platforms>AnyCPU;x64</Platforms>
 
     </PropertyGroup>
 
@@ -52,10 +53,19 @@
         <Deterministic>False</Deterministic>
         <NoWarn>1701;1702;1591;IDE0073;</NoWarn>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      <Deterministic>False</Deterministic>
+      <NoWarn>1701;1702;1591;IDE0073;</NoWarn>
+    </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <Deterministic>False</Deterministic>
         <NoWarn>1701;1702;1591;IDE0073;</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <Deterministic>False</Deterministic>
+      <NoWarn>1701;1702;1591;IDE0073;</NoWarn>
     </PropertyGroup>
 
 
@@ -70,10 +80,6 @@
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Toolkit.HighPerformance" Version="7.1.2" />
     </ItemGroup>
 
     <ItemGroup>
@@ -126,9 +132,10 @@
         <Content Include="raylib.dll">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        <Content Include="raylib.pdb">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CommunityToolkit.HighPerformance" Version="8.3.1" />
     </ItemGroup>
 
     <ItemGroup>

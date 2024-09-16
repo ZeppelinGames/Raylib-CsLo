@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,7 @@ namespace Raylib_CsLo;
 
 public static unsafe partial class RayGui
 {
-
-
-
-	
-	public static Boolean GuiWindowBox(Rectangle bounds, string? title)
+	public static bool GuiWindowBox(Rectangle bounds, string? title)
 	{
 		using var sotitle = title.MarshalUtf8();
 		return GuiWindowBox(bounds, sotitle.AsPtr());
@@ -51,21 +48,21 @@ public static unsafe partial class RayGui
 	}
 
 
-	public static Boolean GuiButton(Rectangle bounds, string? text)
+	public static bool GuiButton(Rectangle bounds, string? text)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiButton(bounds, sotext.AsPtr());
 	}
 
 
-	public static Boolean GuiLabelButton(Rectangle bounds, string? text)
+	public static bool GuiLabelButton(Rectangle bounds, string? text)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiLabelButton(bounds, sotext.AsPtr());
 	}
 
 
-	public static Boolean GuiToggle(Rectangle bounds, string? text, Boolean active)
+	public static bool GuiToggle(Rectangle bounds, string? text, bool active)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiToggle(bounds, sotext.AsPtr(), active);
@@ -74,17 +71,39 @@ public static unsafe partial class RayGui
 
 	public static int GuiToggleGroup(Rectangle bounds, string? text, int active)
 	{
-		using var sotext = text.MarshalUtf8();
-		return GuiToggleGroup(bounds, sotext.AsPtr(), active);
+		using var soText = text.MarshalUtf8();
+		return GuiToggleGroup(bounds, soText.AsPtr(), active);
 	}
 
+	public static Color GuiColorPicker(Rectangle bounds, string text, Color color)
+	{
+		using var soText = text.MarshalUtf8();
+		return GuiColorPicker(bounds, soText.AsPtr(), color);
+	}
 
-	public static Boolean GuiCheckBox(Rectangle bounds, string? text, Boolean @checked)
+	public static bool GuiDropdownBox(Rectangle bounds, string? text, int active, bool editMode)
+	{
+		IntPtr soActive = active;
+		return GuiDropdownBox(bounds, text, (int*)soActive.ToPointer(), editMode);
+	}
+
+	public static Rectangle GuiScrollPanel(Rectangle bounds, string text, Rectangle content, Vector2 scroll)
+	{
+		using var soText = text.MarshalUtf8();
+		return GuiScrollPanel(bounds, soText.AsPtr(), content, &scroll);
+	}
+
+	public static bool GuiCheckBox(Rectangle bounds, string? text, bool @checked)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiCheckBox(bounds, sotext.AsPtr(), @checked);
 	}
 
+	public static Color GuiColorPanel(Rectangle bounds, string? text, Color color)
+	{
+		using var soText = text.MarshalUtf8();
+		return GuiColorPanel(bounds, soText.AsPtr(), color);
+	}
 
 	public static int GuiComboBox(Rectangle bounds, string? text, int active)
 	{
@@ -93,35 +112,35 @@ public static unsafe partial class RayGui
 	}
 
 
-	public static Boolean GuiDropdownBox(Rectangle bounds, string? text, int* active, Boolean editMode)
+	public static bool GuiDropdownBox(Rectangle bounds, string? text, int* active, bool editMode)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiDropdownBox(bounds, sotext.AsPtr(), active, editMode);
 	}
 
 
-	public static Boolean GuiSpinner(Rectangle bounds, string? text, int* value, int minValue, int maxValue, Boolean editMode)
+	public static bool GuiSpinner(Rectangle bounds, string? text, int* value, int minValue, int maxValue, bool editMode)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiSpinner(bounds, sotext.AsPtr(), value, minValue, maxValue, editMode);
 	}
 
 
-	public static Boolean GuiValueBox(Rectangle bounds, string? text, int* value, int minValue, int maxValue, Boolean editMode)
+	public static bool GuiValueBox(Rectangle bounds, string? text, int* value, int minValue, int maxValue, bool editMode)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiValueBox(bounds, sotext.AsPtr(), value, minValue, maxValue, editMode);
 	}
 
 
-	public static Boolean GuiTextBox(Rectangle bounds, string? text, int textSize, Boolean editMode)
+	public static bool GuiTextBox(Rectangle bounds, string? text, int textSize, bool editMode)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiTextBox(bounds, sotext.AsPtr(), textSize, editMode);
 	}
 
 
-	public static Boolean GuiTextBoxMulti(Rectangle bounds, string? text, int textSize, Boolean editMode)
+	public static bool GuiTextBoxMulti(Rectangle bounds, string? text, int textSize, bool editMode)
 	{
 		using var sotext = text.MarshalUtf8();
 		return GuiTextBoxMulti(bounds, sotext.AsPtr(), textSize, editMode);
@@ -149,6 +168,11 @@ public static unsafe partial class RayGui
 		return GuiProgressBar(bounds, sotextLeft.AsPtr(), sotextRight.AsPtr(), value, minValue, maxValue);
 	}
 
+	public static void GuiPanel(Rectangle bounds, string text)
+	{
+		using var soText = text.MarshalUtf8();
+		GuiPanel(bounds, soText.AsPtr());
+	}
 
 	public static void GuiStatusBar(Rectangle bounds, string? text)
 	{
@@ -213,7 +237,7 @@ i++)
 		using var soMessage = message.MarshalUtf8();
 		using var sobuttons = buttons.MarshalUtf8();
 		using var sotext = text.MarshalUtf8();
-		return GuiTextInputBox(bounds, soTitle.AsPtr(), soMessage.AsPtr(), sobuttons.AsPtr(), sotext.AsPtr(),textMaxSize,null);
+		return GuiTextInputBox(bounds, soTitle.AsPtr(), soMessage.AsPtr(), sobuttons.AsPtr(), sotext.AsPtr(), textMaxSize, null);
 	}
 
 	public static void GuiLoadStyle(string? fileName)

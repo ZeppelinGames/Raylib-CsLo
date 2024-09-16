@@ -68,10 +68,9 @@ public static unsafe partial class Raylib
 	/// <summary>
 	/// dealing with __arglist: https://www.c-sharpcorner.com/UploadFile/b942f9/calling-unmanaged-functions-which-take-a-variable-number-of-arguments-from-C-Sharp/
 	/// </summary>
-	[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-	[return: NativeTypeName("const char *")]
-	public static extern sbyte* TextFormat([NativeTypeName("const char *")] sbyte* text, __arglist);
-
+	//[DllImport("raylib", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+	//[return: NativeTypeName("const char *")]
+	//public static extern sbyte* TextFormat([NativeTypeName("const char *")] sbyte* text, __arglist);
 
 	public static void SetConfigFlags(ConfigFlags flags)
 	{
@@ -128,8 +127,7 @@ public static unsafe partial class Raylib
 	}
 	public static void TraceLog(int logLevel, string text)
 	{
-		using var spanOwner = text.MarshalUtf8();
-		TraceLog(logLevel, spanOwner.AsPtr());
+		TraceLog(logLevel, text);
 	}
 
 	public static void TraceLog(TraceLogLevel logLevel, string text, params object[] args)

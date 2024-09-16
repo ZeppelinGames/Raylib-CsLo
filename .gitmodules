@@ -10,3 +10,6 @@
 [submodule "sub-modules/rres"]
 	path = sub-modules/rres
 	url = https://github.com/raysan5/rres
+[submodule "sub-modules/ClangSharp"]
+	path = sub-modules/ClangSharp
+	url = https://github.com/dotnet/ClangSharp.git
